@@ -8,7 +8,7 @@ Sections
 - [Source Code](src/)
 
 Main assignment Document:
-docs/Assignment-Answer-Sheet.md
+[docs/Assignment-Answer-Sheet.md](docs/Assignment-Answer-Sheet.md)
 
 Main Startup Script: 
 [src/main.py](src/main.py)
