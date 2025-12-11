@@ -1,14 +1,16 @@
-High performance computing assignment 2
+High Performance Computing Assignment 2
 
-#Sections
+Sections
 - [Demo](docs/utils/demo.mp4)
 - [Requirements](docs/requirements.md)
 - [Design](docs/design.md)
 - [Testing](docs/testing.md)
 - [Source Code](src/)
 
+Main assignment Document:
+docs/Assignment-Answer-Sheet.md
 
-Main startup script is:
+Main Startup Script: 
 [src/main.py](src/main.py)
 
 
