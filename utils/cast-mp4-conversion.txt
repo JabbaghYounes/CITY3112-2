@@ -1,0 +1,12 @@
+ffmpeg -i myfile.cast -c:v libx264 -preset slow -crf 18 -c:a aac -b:a 192k output.mp4
+
+Breakdown of the Command:
+
+    -i input.cast: Specifies the input file.
+    -c:v libx264: Uses the H.264 codec for video.
+    -preset slow: Optimizes compression for better quality (you can replace slow with medium for faster encoding).
+    -crf 18: Sets the Constant Rate Factor for quality; lower values mean better quality (range is 18-28).
+    -c:a aac: Uses AAC codec for audio.
+    -b:a 192k: Sets the audio bitrate to 192 kbps.
+    output.mp4: The name of the output file.
+
