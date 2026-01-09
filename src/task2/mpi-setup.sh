@@ -1,6 +1,6 @@
 #!/bin/bash
 # mpi-setup.sh
-# mpi cluster setup script
+# MPI cluster setup, to be ran on the controller VM
 
 USER="hpcuser"
 NODES=("controller" "worker1" "worker2" "worker3")
@@ -8,12 +8,12 @@ IPS=("192.168.122.10" "192.168.122.11" "192.168.122.12" "192.168.122.13")
 SLOTS_PER_NODE=2
 HOSTFILE="/home/$USER/hosts.txt"
 
-# Detect local node hostname
+# Detect local node
 LOCAL_NODE=$(hostname)
 
 echo "=== MPI CLUSTER PRE-FLIGHT CHECKS ==="
 
-# Helper function to run commands locally or via SSH
+# --- Helper function to run commands locally or via SSH ---
 run_on_node() {
   NODE=$1
   shift
@@ -21,7 +21,7 @@ run_on_node() {
   if [[ "$NODE" == "$LOCAL_NODE" ]]; then
     eval "$CMD"
   else
-    ssh "$USER@$NODE" "$CMD"
+    ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$USER@$NODE" "$CMD"
   fi
 }
 
@@ -31,13 +31,13 @@ for NODE in "${NODES[@]}"; do
   if [[ "$NODE" == "$LOCAL_NODE" ]]; then
     echo "✓ Local node $NODE OK"
   else
-    ssh -o BatchMode=yes -o ConnectTimeout=5 "$USER@$NODE" "echo OK" >/dev/null || {
+    run_on_node "$NODE" "echo OK" >/dev/null || {
       echo "ERROR: Cannot SSH into $NODE as $USER"
       exit 1
     }
+    echo "✓ SSH to $NODE OK"
   fi
 done
-echo "✓ SSH connectivity OK"
 
 # --- 2. Hostname correctness ---
 echo "[2/6] Checking hostnames..."
