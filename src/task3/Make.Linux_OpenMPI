@@ -1,0 +1,70 @@
+########################################################################
+# HPL 2.3 Makefile for AlmaLinux 9 + OpenMPI + OpenBLAS
+# Configured for compilation using C compiler (mpicc) and OpenBLAS
+# Author: Configured for HPC cluster assignment
+# Date: 2026-01-11
+########################################################################
+
+# ----------------------------------------------------------------------
+# - Platform identifier ------------------------------------------------
+# ----------------------------------------------------------------------
+ARCH         = Linux_OpenMPI        # Custom platform name
+
+# ----------------------------------------------------------------------
+# - HPL Directory Structure / HPL library ------------------------------
+# ----------------------------------------------------------------------
+TOPdir       = $(HOME)/hpl         # Base directory of HPL installation
+INCdir       = $(TOPdir)/include   # HPL include files
+BINdir       = $(TOPdir)/bin/$(ARCH)  # Binary output directory
+LIBdir       = $(TOPdir)/lib/$(ARCH)  # Library output directory
+HPLlib       = $(LIBdir)/libhpl.a      # HPL static library
+
+# ----------------------------------------------------------------------
+# - Message Passing Interface (MPI) -----------------------------------
+# ----------------------------------------------------------------------
+# Using OpenMPI C compiler wrapper. MPI headers/libs will be found automatically
+CC           = mpicc
+LINKER       = mpicc
+MPinc        =                        # Empty because mpicc handles include path
+MPlib        =                        # Empty because mpicc handles linking
+
+# ----------------------------------------------------------------------
+# - Linear Algebra Library (BLAS / LAPACK) -----------------------------
+# ----------------------------------------------------------------------
+# Using system-installed OpenBLAS
+LAdir        =
+LAinc        =
+LAlib        = -lopenblas             # Link against OpenBLAS library
+
+# ----------------------------------------------------------------------
+# - C / Fortran interface ---------------------------------------------
+# ----------------------------------------------------------------------
+# Needed because HPL calls Fortran routines from C
+F2CDEFS      = -DAdd__ -DF77_INTEGER=int -DStringSunStyle
+
+# ----------------------------------------------------------------------
+# - HPL compile-time options ------------------------------------------
+# ----------------------------------------------------------------------
+# Enable detailed timing and progress reporting
+HPL_OPTS     = -DHPL_DETAILED_TIMING -DHPL_PROGRESS_REPORT
+HPL_INCLUDES = -I$(INCdir) -I$(INCdir)/$(ARCH)   # Include HPL headers
+HPL_LIBS     = $(HPLlib) $(LAlib) $(MPlib)      # Libraries for linking
+HPL_DEFS     = $(F2CDEFS) $(HPL_OPTS) $(HPL_INCLUDES)
+
+# ----------------------------------------------------------------------
+# - Compiler flags -----------------------------------------------------
+# ----------------------------------------------------------------------
+CCFLAGS      = $(HPL_DEFS) -O3 -w    # Optimization level 3, suppress warnings
+LINKFLAGS    = $(CCFLAGS)            # Link flags same as compile flags
+
+# ----------------------------------------------------------------------
+# - Archiver -----------------------------------------------------------
+# ----------------------------------------------------------------------
+ARCHIVER     = ar
+ARFLAGS      = r
+RANLIB       = echo                   # Not needed on modern systems
+
+########################################################################
+# End of Make.Linux_OpenMPI
+########################################################################
+
