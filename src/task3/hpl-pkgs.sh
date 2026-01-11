@@ -14,10 +14,8 @@ PACKAGES=(
   make
   openmpi
   openmpi-devel
-  blas
-  blas-devel
-  lapack
-  lapack-devel
+  openblas
+  openblas-devel
   wget
   tar
 )
