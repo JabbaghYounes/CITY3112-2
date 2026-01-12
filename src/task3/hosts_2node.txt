@@ -1,0 +1,3 @@
+controller slots=2
+worker1 slots=2
+
