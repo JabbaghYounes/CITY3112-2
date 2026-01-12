@@ -1,0 +1,30 @@
+HPLinpack benchmark input file
+1
+15000        Ns
+1
+128          NBs
+0            PMAP
+1
+2 4          P Q
+16.0         threshold
+1
+2            PFACT
+1
+2            NBMIN
+1
+2            RFACT
+1
+1            BCAST
+1
+1            DEPTH
+2
+0            SWAP
+64           swapping threshold
+0
+0            L1
+0
+0            U
+1
+1            EQUIL
+8            memory alignment
+
