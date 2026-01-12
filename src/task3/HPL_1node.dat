@@ -1,23 +1,25 @@
 HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
-HPL.out
-1
-1000
-1
-16
-0
-1
-2
-16.0
-1
-2
-1
-1
-1
-1
-2
-0
-64
+HPL.out          # Output file
+1                # Number of problem sizes (N values)
+1000             # Problem size (N)
+1                # Number of process grids
+2                # Q value of process grid (P=1, Q=2)
+16               # Block size (NB)
+0                # Process mapping (0=Row-major)
+1                # Panel fact (1=Left-looking)
+2                # Recursive stopping criteria
+16.0             # Threshold for panel factorization
+1                # Use broadcast (1=Yes)
+2                # Number of recursive panel lookahead
+1                # Swap threshold
+1                # Equilibration (1=Yes)
+1                # Memory alignment
+1                # Random seed
+2                # Max depth of recursion
+0                # Recursive panel factorization
+64               # Alignment in bytes
+0                # Output file format (0=HPL.out)
 0
 0
 0
