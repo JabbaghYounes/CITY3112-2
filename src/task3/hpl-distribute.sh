@@ -43,10 +43,9 @@ for NODE in "${WORKERS[@]}"; do
 
   echo ">>> Copying HPL files to $NODE"
   rsync -av \
-    "$HPL_DIR/bin" \
+    "$HPL_DIR/bin/Linux_OpenMPI" \
     "$HPL_DIR/Make.Linux_OpenMPI" \
-    "$HPL_DIR/HPL.dat" \
-    "$NODE:$HPL_DIR/"
+    "$NODE:$HPL_DIR/bin/"
 
   echo ">>> HPL distribution completed for $NODE"
 done
