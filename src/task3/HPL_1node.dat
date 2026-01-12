@@ -1,31 +1,33 @@
 HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
+HPL.out
+6
 1
-10000        Ns
+15000
 1
-128          NBs
-0            PMAP (0=Row-,1=Column-major)
+128
+0
 1
-1 2          P Q
-16.0         threshold
+2 1
+16.0
 1
-2            PFACTs (0=left, 1=Crout, 2=Right)
-1
-2            NBMINs
-1
-2            RFACTs (0=left, 1=Crout, 2=Right)
-1
-1            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
-1
-1            DEPTHs
 2
-0            SWAP (0=bin-exch,1=long,2=mix)
-64           swapping threshold
-0
-0            L1 (0=no-trans,1=trans)
-0
-0            U  (0=no-trans,1=trans)
 1
-1            EQUIL (0=no,1=yes)
-8            memory alignment in double (> 0)
+2
+1
+2
+1
+1
+1
+1
+2
+0
+64
+0
+0
+0
+0
+1
+1
+8
 
