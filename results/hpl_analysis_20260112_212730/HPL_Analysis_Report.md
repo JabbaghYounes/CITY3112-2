@@ -1,7 +1,5 @@
 # HPL Benchmark Analysis Report
 
----
-
 ## Executive Summary
 
 This report presents the results and analysis of High-Performance LINPACK (HPL) benchmarking conducted on a multi-node HPC cluster configuration. The benchmarks evaluate the computational performance measured in Floating Point Operations Per Second (FLOPS) across various system configurations.
