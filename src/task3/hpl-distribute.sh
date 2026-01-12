@@ -8,7 +8,7 @@
 set -e
 
 WORKERS=("worker1" "worker2" "worker3")
-HPL_DIR="$HOME/hpl"
+HPL_DIR="$HOME/hpl-2.3"
 
 echo "=== Starting HPL distribution to worker nodes ==="
 
