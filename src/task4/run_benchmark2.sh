@@ -1,24 +1,24 @@
 #!/bin/bash
 # CITY3112 HPC Coursework - Task 4
 # Benchmark Runner Script
-# 
+#
 # This script runs the distributed hashing application with varying
 # numbers of processes to measure scaling efficiency.
 
 PROGRAM="./distributed_hash"
 HOSTFILE="hostfile"
-CHUNK_SIZE_MB=100  # Size per process in MB
+CHUNK_SIZE_MB=50 # Size per process in MB
 OUTPUT_FILE="benchmark_results.csv"
-RUNS_PER_CONFIG=3  # Number of runs per configuration for averaging
+RUNS_PER_CONFIG=3 # Number of runs per configuration for averaging
 
 # Check if program exists
 if [ ! -f "$PROGRAM" ]; then
-    echo "Error: $PROGRAM not found. Run 'make' first."
-    exit 1
+  echo "Error: $PROGRAM not found. Run 'make' first."
+  exit 1
 fi
 
 # Create output file with header
-echo "run,processes,chunk_mb,total_mb,time_sec,throughput_mbs" > "$OUTPUT_FILE"
+echo "run,processes,chunk_mb,total_mb,time_sec,throughput_mbs" >"$OUTPUT_FILE"
 
 echo "=============================================="
 echo "  Distributed Hashing Benchmark Suite"
@@ -31,25 +31,25 @@ echo ""
 
 # Test configurations: 1, 2, 4, 6, 8 processes
 for np in 1 2 4 6 8; do
-    echo "Testing with $np process(es)..."
-    
-    for run in $(seq 1 $RUNS_PER_CONFIG); do
-        echo "  Run $run of $RUNS_PER_CONFIG..."
-        
-        # Run the benchmark and extract CSV line
-        result=$(mpirun --hostfile "$HOSTFILE" -np $np "$PROGRAM" $CHUNK_SIZE_MB 2>/dev/null | grep "^[0-9]")
-        
-        if [ -n "$result" ]; then
-            echo "$run,$result" >> "$OUTPUT_FILE"
-        else
-            echo "  Warning: No result captured for run $run"
-        fi
-        
-        # Brief pause between runs
-        sleep 1
-    done
-    
-    echo ""
+  echo "Testing with $np process(es)..."
+
+  for run in $(seq 1 $RUNS_PER_CONFIG); do
+    echo "  Run $run of $RUNS_PER_CONFIG..."
+
+    # Run the benchmark and extract CSV line
+    result=$(mpirun --hostfile "$HOSTFILE" -np $np "$PROGRAM" $CHUNK_SIZE_MB 2>/dev/null | grep "^[0-9]")
+
+    if [ -n "$result" ]; then
+      echo "$run,$result" >>"$OUTPUT_FILE"
+    else
+      echo "  Warning: No result captured for run $run"
+    fi
+
+    # Brief pause between runs
+    sleep 1
+  done
+
+  echo ""
 done
 
 echo "=============================================="
