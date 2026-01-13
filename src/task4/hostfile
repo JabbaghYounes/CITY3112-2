@@ -1,0 +1,7 @@
+# CITY3112 HPC Cluster Hostfile
+# Based on Task 1 & 2 configuration
+
+controller slots=2
+worker1 slots=2
+worker2 slots=2
+worker3 slots=2
