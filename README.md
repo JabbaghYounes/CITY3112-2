@@ -6,11 +6,6 @@ Sections
 - [Design](docs/design.md)
 - [Testing](docs/testing.md)
 - [Source Code](src/)
-
-Main Assignment Document:
-[docs/Assignment-Answer-Sheet.md](docs/Assignment-Answer-Sheet.md)
-
-Main Scripts: 
-[src/](src/main.py)
+- [Main Assignment Document](docs/Assignment-Answer-Sheet.md)
 
 
