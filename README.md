@@ -7,10 +7,10 @@ Sections
 - [Testing](docs/testing.md)
 - [Source Code](src/)
 
-Main assignment Document:
+Main Assignment Document:
 [docs/Assignment-Answer-Sheet.md](docs/Assignment-Answer-Sheet.md)
 
-Main Startup Script: 
-[src/main.py](src/main.py)
+Main Scripts: 
+[src/](src/main.py)
 
 
